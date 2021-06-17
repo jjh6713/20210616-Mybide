@@ -1,0 +1,329 @@
+{% extends "base.html" %}
+{% block content %}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=yes">
+
+<!------ Include the above in your HEAD tag ---------->
+<style>
+body {
+    margin:0;
+    color:#212529;
+    font:600 16px/18px 'Open Sans',sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+   height: 100vh;
+    background-color: #757f9a;
+    background-image: linear-gradient(147deg, #757f9a 0%, #d7dde8 100%);
+    background-size : cover;
+   background-attachment: fixed;
+}
+:after,:before{box-sizing:border-box}
+.clearfix:after,.clearfix:before{content:'';display:table}
+.clearfix:after{clear:both;display:block}
+a{color:inherit;text-decoration:none}
+
+.login-wrap{
+   margin:auto;
+   max-width:510px;
+   height:510px;
+   position:relative;
+   box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.login-html{
+   width:100%;
+   height:100%;
+   position:absolute;
+   padding:90px 70px 50px 70px;
+   background:rgba(0,0,0,0.5); 
+}
+.login-html .sign-in-htm,
+.login-html .sign-up-htm{
+   top:0;
+   left:0;
+   right:0;
+   bottom:0;
+   position:absolute;
+   -webkit-transform:rotateY(180deg);
+           transform:rotateY(180deg);
+   -webkit-backface-visibility:hidden;
+           backface-visibility:hidden;
+   -webkit-transition:all .4s linear;
+   transition:all .4s linear;
+}
+.login-html .sign-in,
+.login-html .sign-up,
+.login-form .group .check{
+   display:none;
+}
+.login-html .tab,
+.login-form .group .label,
+.login-form .group .button{
+   text-transform:uppercase;
+}
+.login-html .tab{
+   font-size:22px;
+   padding-bottom:5px;
+   margin:0 20px 10px 0;
+   display:inline-block;
+   border-bottom:2px solid transparent;
+}
+.login-html .sign-in:checked + .tab,
+.login-html .sign-up:checked + .tab{
+   color:#fff;
+   border-color:#1161ee;
+}
+.login-form{
+   min-height:345px;
+   position:relative;
+   -webkit-perspective:1000px;
+           perspective:1000px;
+   -webkit-transform-style:preserve-3d;
+           transform-style:preserve-3d;
+}
+.login-form .group{
+   margin-bottom:15px;
+}
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button{
+   width:100%;
+   color:#fff;
+   display:block;
+}
+.login-form .group .input,
+.login-form .group .button{
+   border:none;
+   padding:15px 20px;
+   border-radius:25px;
+   background:rgba(255,255,255,.1);
+}
+.login-form .group input[data-type="password"]{
+   text-security:circle;
+   -webkit-text-security:circle;
+}
+.login-form .group .label{
+   color:#aaa;
+   font-size:12px;
+}
+.login-form .group .button{
+   background:#1161ee;
+}
+.login-form .group label .icon{
+   width:15px;
+   height:15px;
+   border-radius:2px;
+   position:relative;
+   display:inline-block;
+   background:rgba(255,255,255,.1);
+}
+.login-form .group label .icon:before,
+.login-form .group label .icon:after{
+   content:'';
+   width:10px;
+   height:2px;
+   background:#fff;
+   position:absolute;
+   -webkit-transition:all .2s ease-in-out 0s;
+   transition:all .2s ease-in-out 0s;
+}
+.login-form .group label .icon:before{
+   left:3px;
+   width:5px;
+   bottom:6px;
+   -webkit-transform:scale(0) rotate(0);
+           transform:scale(0) rotate(0);
+}
+.login-form .group label .icon:after{
+   top:6px;
+   right:0;
+   -webkit-transform:scale(0) rotate(0);
+           transform:scale(0) rotate(0);
+}
+.login-form .group .check:checked + label{
+   color:#fff;
+}
+.login-form .group .check:checked + label .icon{
+   background:#1161ee;
+}
+.login-form .group .check:checked + label .icon:before{
+   -webkit-transform:scale(1) rotate(45deg);
+           transform:scale(1) rotate(45deg);
+}
+.login-form .group .check:checked + label .icon:after{
+   -webkit-transform:scale(1) rotate(-45deg);
+           transform:scale(1) rotate(-45deg);
+}
+.login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
+   -webkit-transform:rotate(0);
+           transform:rotate(0);
+}
+.login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
+   -webkit-transform:rotate(0);
+           transform:rotate(0);
+}
+.hr{
+   height:2px;
+   position: relative;
+   background:rgba(255,255,255,.2);
+}
+.foot-lnk{
+   text-align:center;
+}
+.login_error, .signup_error{
+   width:100%;
+   height: 15%;
+}
+.ppp {
+   color: #aaa;
+   float:left;
+}
+.custom-control {
+   float:left;
+   margin-left: 34%;
+}
+
+@media screen and (max-width: 490px) { 
+   .login-html{padding:81px 63px 45px 63px;}
+   .login-wrap{height: 496px;}
+}
+@media screen and (max-width: 472px) { 
+   .login-html{padding:63px 49px 35px 49px;}
+   .login-wrap{height: 468px;}
+}
+@media screen and (max-width: 450px) { 
+   .login-html{padding:54px 42px 30px 42px;}
+   .login-html .tab{font-size:21px;}
+   .login-form .group .label{font-size:10px;}
+   .login-wrap{height: 454px;}
+}
+@media screen and (max-width: 418px) { 
+   .login-html{padding:45px 35px 25px 35px;}
+   .login-wrap{height: 440px;}
+}
+
+</style>
+
+<script>
+    $(document).ready(function(){
+    // 라디오버튼 클릭시 이벤트 발생
+      $("input:radio[name=tab]").click(function(){
+         if($("input[name=tab]:checked").val() == "1"){
+         if($(window).width() > 490){
+            $('.login-wrap').height('510px');
+         }else if($(window).width() <= 490 && $(window).width() > 472){
+            $('.login-wrap').height('496px');
+         }else if($(window).width() <= 472 && $(window).width() > 450){
+            $('.login-wrap').height('468px');
+         }else if($(window).width() <= 450 && $(window).width() > 418){
+            $('.login-wrap').height('454px');
+         }else{
+            $('.login-wrap').height('440px');
+         }
+            // radio 버튼의 value 값이 1이라면 원래 크기의 박스
+
+         }else if($("input[name=tab]:checked").val() == "2"){
+         if($(window).width() > 490){
+            $('.login-wrap').height('1000px');
+         }else if($(window).width() <= 490 && $(window).width() > 472){
+            $('.login-wrap').height('986px');
+         }else if($(window).width() <= 472 && $(window).width() > 450){
+            $('.login-wrap').height('958px');
+         }else if($(window).width() <= 450 && $(window).width() > 418){
+            $('.login-wrap').height('944px');
+         }else{
+            $('.login-wrap').height('930px');
+         }
+            // radio 버튼의 value 값이 2이라면 박스 크기 키우기
+         }
+      });
+});
+
+</script>
+
+<div class="login-wrap">
+    <div class="login-html">
+        <input id="tab-1" type="radio" name="tab" value = "1" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+        <input id="tab-2" type="radio" name="tab" value = "2" class="sign-up"><label for="tab-2" class="tab">Create An Account</label>
+        <div class="login-form">
+            <form method="POST" value="login-form">
+            {{ login_form.csrf_token }}
+            <div class="sign-in-htm">
+                  <div class="group">
+                      <label for="id" class="label">Username</label>
+                      <input id="id" name="id" type="text" class="input" value="{{ login_form.id.data or '' }}">
+                  </div>
+                  <div class="group">
+                      <label for="password" class="label">Password</label>
+                      <input id="password" name="password" type="password" class="input" value="{{ login_form.password.data or '' }}">
+                  </div>
+                  <div class="group">
+                      <input type="submit" name="form-name" class="button" value="Sign In">
+                  </div>
+                  <div class="login_error">
+                     {% include "login_form_errors.html" %}
+                  </div>
+                  <div class="hr"></div>
+            </div>
+            </form>
+         <form method="POST" name="form-name" value="signup-form">
+            {{ signup_form.csrf_token }}
+            <div class="sign-up-htm">
+               <div class="group">
+                  <label for="id" class="label">Username</label>
+                  <input type="text" class="input" name="id" id="id"
+                  value="{{ signup_form.id.data or '' }}">
+               </div>
+               <div class="group">
+                  <label for="password1" class="label">Password</label>
+                  <input type="password" class="input" name="password1" id="password1"
+                  value="{{ signup_form.password1.data or '' }}">
+               </div>
+               <div class="group">
+                  <label for="password2" class="label">Confirm password</label>
+                  <input type="password" class="input" name="password2" id="password2"
+                  value="{{ signup_form.password2.data or '' }}">
+               </div>
+               <div class="group">
+                  <label for="name" class="label">Name</label>
+                  <input type="text" class="input" name="name" id="name"
+                  value="{{ signup_form.name.data or '' }}">
+               </div>
+               <div class="group">
+                  <label for="age" class="label">Birth</label>
+                  <input type="text" class="input" name="age" id="age"
+                  value="{{ signup_form.age.data or '' }}">
+               </div>
+               <div class="group">
+                  <label for="sex" class="label">Gender</label>
+                  <input type="text" class="input" name="sex" id="sex"
+                  value="{{ signup_form.sex.data or '' }}">
+               </div>
+               <div class="group">
+                  <label for="address" class="label">Address</label>
+                  <input type="text" class="input" name="address" id="address"
+                  value="{{ signup_form.address.data or '' }}">
+               </div>
+               <p class="ppp">개인정보 수집 및 이용 동의</p>
+               <div class="custom-control custom-checkbox">
+                  <a href="#ex1" rel="modal:open">
+                  <input type="checkbox" id="checkbox" name="pri-check" class="custom-control-input">
+                  <label class="custom-control-label" for="checkbox"></label></a>
+               </div>
+               <div class="group">
+                  <input type="submit" name="form-name" class="button" value="Sign Up">
+               </div>
+               <div class="signup_error">
+                  {% include "signup_form_errors.html" %}
+               </div>
+               <div class="hr"></div>
+            </div>
+         </form>
+        </div>   
+    </div>
+</div>
+{% include "auth/login_modal.html" %}
+
+{% endblock %}
