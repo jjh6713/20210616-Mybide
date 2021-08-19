@@ -73,7 +73,7 @@ def upload_file():
 def Save_In_DB(user_id, img_name, all_hash):
     # mongoDB Insert Data
     try:
-        client = MongoClient('3.212.70.241', 27017) # ubuntu
+        client = MongoClient('',) # ubuntu
         db = client.mybide # DB 연결
         print('DB connected')
     except:
