@@ -90,9 +90,9 @@ def Deid_Img(input_image):
 		cv2.imwrite('{}'.format(input_image), output)
 		
 		# Save died image file in S3
-		BUCKET_NAME = "mybide"
-		AWS_ACCESS_KEY = "AKIAYLOHHE3A4V4D5I6F"
-		AWS_SECRET_KEY = "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"
+		BUCKET_NAME = ""
+		AWS_ACCESS_KEY = ""
+		AWS_SECRET_KEY = ""
 
 		s3 = boto3.client('s3',
 				aws_access_key_id = AWS_ACCESS_KEY,
